@@ -14,6 +14,7 @@ const SneezeMapContainer = () => {
 
   const [lat, setLat] = useState(38.627);
   const [lng, setLng] = useState(-90.1994);
+  const [count, setCount] = useState(0);
 
   return (
     <VFlex className={styles.sneezeMapContainer}>
@@ -26,8 +27,14 @@ const SneezeMapContainer = () => {
           Sneeze Map
         </Typography>
         <HFlex>
-          <SneezeMap lat={lat} lng={lng} />
-          <StatisticsComponent setLat={setLat} setLng={setLng} />
+          <SneezeMap lat={lat} lng={lng} setCount={setCount} />
+          <StatisticsComponent
+            setLat={setLat}
+            setLng={setLng}
+            count={count}
+            lat={lat}
+            lng={lng}
+          />
         </HFlex>
 
         {/* Legend */}

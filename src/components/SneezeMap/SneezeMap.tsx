@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const cfg = {
   // radius should be small ONLY if scaleRadius is true (or small radius is intended)
@@ -19,15 +19,34 @@ const cfg = {
   valueField: "count",
 };
 
-const SneezeMap = ({ lat, lng }: any) => {
+const SneezeMap = ({ lat, lng, setCount }: any) => {
+  const [data, setData] = useState<any>([]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const randomCount = Math.floor(Math.random() * 5);
+      const randomLat = Number(`38.${Math.floor(Math.random() * 999)}`);
+      const randomLng = Number(`-90.${Math.floor(Math.random() * 999)}`);
+      setData((prev: any) => [
+        ...prev,
+        { lat: randomLat, lng: randomLng, count: randomCount },
+      ]);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    let newCount = 0;
+    data.forEach((dataPoint: any) => {
+      newCount += dataPoint?.count;
+    });
+    setCount(newCount);
+  }, [data, setCount]);
+
   useEffect(() => {
     const testData = {
       max: 200,
-      data: [
-        { lat: 38.627, lng: -90.1394, count: 50 },
-        { lat: 38.627, lng: -90.1995, count: 50 },
-        { lat: 39.627, lng: -90.1994, count: 30 },
-      ],
+      data,
     };
 
     const baseLayer = L.tileLayer(
@@ -43,13 +62,13 @@ const SneezeMap = ({ lat, lng }: any) => {
 
     const map: any = new L.Map("map", {
       center: new L.LatLng(lat, lng),
-      zoom: 10,
+      zoom: 8,
       layers: [baseLayer, heatmapLayer],
     });
 
     heatmapLayer.setData(testData as any);
     return () => (map as any).remove();
-  }, [lat, lng]);
+  }, [lat, lng, data]);
   return (
     <>
       <div id="map" style={{ height: "500px", width: "80%" }}></div>

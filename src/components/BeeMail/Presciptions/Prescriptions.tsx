@@ -10,17 +10,27 @@ import { HFlex } from "../../shared/Layout/Flex/Flex";
 
 const prescriptions = [
   {
-    name: "Tylenol",
-    description: "Pain reliever and fever reducer.",
+    name: "Montelukast",
+    description:
+      "Prevent asthma attacks and treat allergic rhinitis by blocking substances that cause inflammation.",
     lastOrdered: "March 10, 2023",
     lastDaySupply: 30,
     orderLink: "https://www.express-scripts.com/",
   },
   {
-    name: "Tums",
-    description: "Used to treat heartburn and indigestion.",
+    name: "Fluticasone",
+    description:
+      "Reduces inflammation and is used in treating allergic reactions, asthma, and nasal congestion.",
     lastOrdered: "March 15, 2023",
     lastDaySupply: 60,
+    orderLink: "https://www.express-scripts.com/",
+  },
+  {
+    name: "Antihistamine",
+    description:
+      "Relieve allergy symptoms by blocking histamine action, a substance involved in allergic reactions.",
+    lastOrdered: "March 22, 2023",
+    lastDaySupply: 90,
     orderLink: "https://www.express-scripts.com/",
   },
 ];

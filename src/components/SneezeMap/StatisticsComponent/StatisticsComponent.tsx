@@ -1,19 +1,33 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Typography, Box, Paper, useTheme } from "@mui/material";
 import LocationButton from "../SeeMyLocation/SeeMyLocation";
+import RollNumber from "../ChagingNumbers/RollNumber";
+// import { fetchNearestCity } from "../utils/utils";
+// import { useEffect, useState } from "react";
 
-const StatisticsComponent = ({ setLat, setLng }: any) => {
+const StatisticsComponent = ({
+  setLat,
+  setLng,
+  count,
+}: // lat, lng
+any) => {
   const theme = useTheme();
 
+  // const [lastCity, setLastCity] = useState("N/A");
+
+  // useEffect(() => {
+  //   fetchNearestCity(lat, lng).then((result) => console.log(result));
+  // }, [lat, lng]);
+
   const data = [
-    { label: "Rign now", value: "142,000" },
+    { label: "Cases so Far", value: <RollNumber number={count} /> },
     {
-      label: "Last year",
-      value: "85,000",
+      label: "Last reported in",
+      value: "St. Louis",
     },
     {
-      label: "Historical max",
-      value: "185,000",
+      label: "Last year",
+      value: "115,000",
     },
     {
       label: "Historical average",
