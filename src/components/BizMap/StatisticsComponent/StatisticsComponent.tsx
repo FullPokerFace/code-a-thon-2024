@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Typography, Box, Paper, useTheme } from "@mui/material";
-import LocationButton from "../SeeMyLocation/SeeMyLocation";
-import RollNumber from "../ChagingNumbers/RollNumber";
+import LocationButton from "../../SneezeMap/SeeMyLocation/SeeMyLocation";
+import RollNumber from "../../SneezeMap/ChagingNumbers/RollNumber";
 // import { fetchNearestCity } from "../utils/utils";
 // import { useEffect, useState } from "react";
 
@@ -9,6 +9,7 @@ const StatisticsComponent = ({
   setLat,
   setLng,
   count,
+  availableInStock,
 }: // lat, lng
 any) => {
   const theme = useTheme();
@@ -26,14 +27,18 @@ any) => {
       value: "St. Louis",
     },
     {
-      label: "Last year",
-      value: "115,000",
+      label: "Nearest dispensing point",
+      value: "1 Express Way, Saint Louis, MO 63121",
     },
     {
-      label: "Historical average",
-      value: "130,000",
+      label: "Available to dispsense",
+      value: <RollNumber number={availableInStock} />,
     },
-    { label: "Weather Conditions", value: "Sunny, 65F" },
+    {
+      label: "Forecasted dosses neede",
+      value: "120,000",
+    },
+    { label: "Need to order more?", value: "No" },
   ];
 
   return (

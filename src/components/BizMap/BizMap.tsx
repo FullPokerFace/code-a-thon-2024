@@ -1,59 +1,61 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect } from "react";
-
-const cfg = {
-  // radius should be small ONLY if scaleRadius is true (or small radius is intended)
-  radius: 0.1,
-  maxOpacity: 0.5,
-  // scales the radius based on map zoom
-  scaleRadius: true,
-  // if set to false the heatmap uses the global maximum for colorization
-  // if activated: uses the data maximum within the current map boundaries
-  //   (there will always be a red spot with useLocalExtremas true)
-  useLocalExtrema: true,
-  // which field name in your data represents the latitude - default "lat"
-  latField: "lat",
-  // which field name in your data represents the longitude - default "lng"
-  lngField: "lng",
-  // which field name in your data represents the data value - default "value"
-  valueField: "count",
-};
+import { Paper, Typography, Box, useTheme } from "@mui/material";
+import SneezeMap from "./SneezeMap";
+import { HFlex, VFlex } from "../shared/Layout/Flex/Flex";
+import GoBackButton from "../BeeMail/GoBack/GoBack";
+import styles from "./BizMap.module.scss";
+import StatisticsComponent from "./StatisticsComponent/StatisticsComponent";
+import { useState } from "react";
 
 const BizMap = () => {
-  useEffect(() => {
-    const testData = {
-      max: 200,
-      data: [
-        { lat: 38.627, lng: -90.1394, count: 50 },
-        { lat: 38.627, lng: -90.1995, count: 50 },
-        { lat: 39.627, lng: -90.1994, count: 30 },
-      ],
-    };
+  const theme = useTheme();
 
-    const baseLayer = L.tileLayer(
-      "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-      {
-        attribution:
-          'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
-        maxZoom: 18,
-      }
-    );
+  const [lat, setLat] = useState(38.627);
+  const [lng, setLng] = useState(-90.1994);
+  const [count, setCount] = useState(0);
 
-    const heatmapLayer = new HeatmapOverlay(cfg);
+  const initialInStock = 500;
 
-    const map: any = new L.Map("map", {
-      center: new L.LatLng(38.627, -90.1994),
-      zoom: 10,
-      layers: [baseLayer, heatmapLayer],
-    });
-
-    heatmapLayer.setData(testData as any);
-    return () => (map as any).remove();
-  }, []);
   return (
-    <>
-      <div id="map" style={{ height: "500px" }}></div>
-    </>
+    <VFlex className={styles.BizMap}>
+      <GoBackButton />
+      <Paper
+        elevation={4}
+        sx={{ padding: theme.spacing(3), position: "relative" }}
+      >
+        <Typography variant="h4" gutterBottom>
+          Biz Map
+        </Typography>
+        <HFlex>
+          <SneezeMap lat={lat} lng={lng} setCount={setCount} />
+          <StatisticsComponent
+            setLat={setLat}
+            setLng={setLng}
+            count={count}
+            lat={lat}
+            lng={lng}
+            availableInStock={initialInStock - count}
+          />
+        </HFlex>
+
+        {/* Legend */}
+        <Box sx={{ display: "flex", gap: theme.spacing(2) }}>
+          <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <Box sx={{ width: 15, height: 15, backgroundColor: "red" }}></Box>
+            <Typography variant="body2">High Sneeze Area</Typography>
+          </Box>
+          <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <Box
+              sx={{ width: 15, height: 15, backgroundColor: "yellow" }}
+            ></Box>
+            <Typography variant="body2">Medium Sneeze Area</Typography>
+          </Box>
+          <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <Box sx={{ width: 15, height: 15, backgroundColor: "blue" }}></Box>
+            <Typography variant="body2">Low Sneeze Area</Typography>
+          </Box>
+        </Box>
+      </Paper>
+    </VFlex>
   );
 };
 
