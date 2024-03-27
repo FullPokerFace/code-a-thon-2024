@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect } from "react";
 
 const cfg = {
@@ -40,7 +41,7 @@ const SneezeMap = () => {
 
     const heatmapLayer = new HeatmapOverlay(cfg);
 
-    let map = new L.Map("map", {
+    const map: any = new L.Map("map", {
       center: new L.LatLng(38.627, -90.1994),
       zoom: 10,
       layers: [baseLayer, heatmapLayer],
@@ -48,8 +49,8 @@ const SneezeMap = () => {
 
     console.log(map);
 
-    heatmapLayer.setData(testData);
-    return () => map.remove();
+    heatmapLayer.setData(testData as any);
+    return () => (map as any).remove();
   }, []);
   return (
     <>
