@@ -1,0 +1,39 @@
+.navigation {
+    gap: .5rem;
+
+    .navCaption {
+        font-size: .75rem;
+        font-weight: bold;
+        padding: 0;
+        margin: 0;
+        text-transform: uppercase;
+    }
+
+    .navitem {
+        cursor: pointer;
+        padding: 1rem 2rem;
+        color: #5b6b79;
+        font-size: 14px;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        gap: 1rem;
+        border-radius: .5rem;
+
+        &.active {
+            font-weight: bold;
+            background: #e6edfb;
+            color: #4680FF;
+        }
+
+        &:hover {
+            font-weight: bold;
+            background: #F3F5F7;
+        }
+
+        svg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+}
