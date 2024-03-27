@@ -32,7 +32,12 @@ const Prescriptions = () => {
         <Card key={index} sx={{ maxWidth: 345, mb: 2 }}>
           <CardContent>
             <Typography variant="h5" component="div">
-              <Link href={prescription.orderLink} underline="hover">
+              <Link
+                href={prescription.orderLink}
+                underline="hover"
+                target="_blank"
+                rel="noopener"
+              >
                 {prescription.name}
               </Link>
             </Typography>
@@ -47,7 +52,12 @@ const Prescriptions = () => {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small" href={prescription.orderLink}>
+            <Button
+              size="small"
+              href={prescription.orderLink}
+              target="_blank"
+              rel="noopener"
+            >
               Order Now
             </Button>
           </CardActions>

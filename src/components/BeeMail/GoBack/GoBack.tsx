@@ -10,6 +10,7 @@ const GoBackButton = () => {
       variant="contained"
       startIcon={<IoArrowBack />}
       onClick={() => history.push("/")}
+      sx={{ maxWidth: "fit-content" }}
     >
       Go Back to Home Page
     </Button>

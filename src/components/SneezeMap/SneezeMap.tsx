@@ -3,7 +3,7 @@ import { useEffect } from "react";
 
 const cfg = {
   // radius should be small ONLY if scaleRadius is true (or small radius is intended)
-  radius: 0.1,
+  radius: 0.3,
   maxOpacity: 0.5,
   // scales the radius based on map zoom
   scaleRadius: true,
@@ -19,7 +19,7 @@ const cfg = {
   valueField: "count",
 };
 
-const SneezeMap = () => {
+const SneezeMap = ({ lat, lng }: any) => {
   useEffect(() => {
     const testData = {
       max: 200,
@@ -42,17 +42,17 @@ const SneezeMap = () => {
     const heatmapLayer = new HeatmapOverlay(cfg);
 
     const map: any = new L.Map("map", {
-      center: new L.LatLng(38.627, -90.1994),
+      center: new L.LatLng(lat, lng),
       zoom: 10,
       layers: [baseLayer, heatmapLayer],
     });
 
     heatmapLayer.setData(testData as any);
     return () => (map as any).remove();
-  }, []);
+  }, [lat, lng]);
   return (
     <>
-      <div id="map" style={{ height: "500px" }}></div>
+      <div id="map" style={{ height: "500px", width: "80%" }}></div>
     </>
   );
 };
