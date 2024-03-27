@@ -8,6 +8,9 @@ const HomePage: React.FC = () => {
   const handleUserLoginClick = () => {
     history.push("/beemail");
   };
+  const handleBusinessLogin = () => {
+    history.push("/bizmap");
+  };
 
   return (
     <Box
@@ -34,9 +37,7 @@ const HomePage: React.FC = () => {
           variant="contained"
           color="secondary"
           startIcon={<FaBusinessTime />}
-          onClick={() => {
-            console.log("Business Login Clicked");
-          }}
+          onClick={handleBusinessLogin}
         >
           Business Login
         </Button>

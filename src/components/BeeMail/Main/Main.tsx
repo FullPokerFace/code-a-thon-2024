@@ -37,7 +37,7 @@ const Main = () => {
         endIcon={<FaMapMarked />}
         onClick={() => history.push("/sneezemap")}
       >
-        See the map
+        See the SneezeMap
       </Button>
       <br />
       <br />

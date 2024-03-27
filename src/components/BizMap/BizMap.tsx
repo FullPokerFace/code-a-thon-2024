@@ -19,7 +19,7 @@ const cfg = {
   valueField: "count",
 };
 
-const SneezeMap = () => {
+const BizMap = () => {
   useEffect(() => {
     const testData = {
       max: 200,
@@ -57,4 +57,4 @@ const SneezeMap = () => {
   );
 };
 
-export default SneezeMap;
+export default BizMap;
