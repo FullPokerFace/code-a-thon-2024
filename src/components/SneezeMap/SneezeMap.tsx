@@ -24,9 +24,12 @@ const SneezeMap = ({ lat, lng, setCount }: any) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const randomCount = Math.floor(Math.random() * 5);
+      const randomCount = Math.floor(Math.random() * 200 + 1);
       const randomLat = Number(`38.${Math.floor(Math.random() * 999)}`);
-      const randomLng = Number(`-90.${Math.floor(Math.random() * 999)}`);
+      const randomLngFull = Math.floor(Math.random() * 4 + 1);
+      const randomLng = Number(
+        `-${87 + randomLngFull}.${Math.floor(Math.random() * 999)}`
+      );
       setData((prev: any) => [
         ...prev,
         { lat: randomLat, lng: randomLng, count: randomCount },

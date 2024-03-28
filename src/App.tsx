@@ -2,7 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import BeeMail from "./components/BeeMail/BeeMail";
 import Home from "./components/Home/Home";
-import BizMap from "./components/BizMap/BizMap";
+import BizMap from "./components/BizMap/BizMapContainer";
 import SneezeMapContainer from "./components/SneezeMap/SneezeMapContainer";
 
 function App() {
