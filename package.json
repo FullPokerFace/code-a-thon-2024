@@ -7,6 +7,8 @@
     "dev": "vite",
     "start": "node server.cjs",
     "insert": "node db/insert_heatmap_data_script.cjs",
+    "db_setup": "node db/db_setup.cjs",
+    "seed": "node db/heatmap_seed.cjs & node db/predictions_seed.cjs",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
