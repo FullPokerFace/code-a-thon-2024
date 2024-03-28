@@ -1,13 +1,14 @@
-# How to run Frontend 
+# How to run Frontend
+- npm install or yarn install
 - run "npm run dev"
 
-# How To set up  DATABASE and Back end
+# How to set up  database and backend server
 - npm install or yarn install - install dependencies
 - run "node db/db_setup.cjs" -  create database and table in mysql localhost
 - run "node db/seed.cjs" -  seed test data to heat map table
 - run "npm start" - start server on localhost port 3000 - same port, database data is retrieved for heatmap data
 
-# How To set up  run live heatmap data simulation script
+# How to run live heatmap data simulation script
 - run "npm run insert" - run this on a separate console from the server
 
 # React + TypeScript + Vite
