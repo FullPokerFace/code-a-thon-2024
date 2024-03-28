@@ -1,0 +1,7 @@
+[
+    {"state": "PA", "urban_ratio": 0.787, "predicted_demand": 4995446, "percentage_of_population": 3.89, "percentage_of_asthma": 10.89, "market_share": 10.00, "allergy_score":173.97, "adjustment": 0.12, "prescription_demand": 5801 },
+    {"state": "FL", "urban_ratio": 0.91, "predicted_demand": 5776182, "percentage_of_population": 6.84, "percentage_of_asthma": 8.6, "market_share": 10.00, "allergy_score":177.88, "adjustment": 0.10, "prescription_demand": 6044 },
+    {"state": "NC", "urban_ratio": 0.66, "predicted_demand": 4189319, "percentage_of_population": 3.27, "percentage_of_asthma": 9.7, "market_share": 10.00, "allergy_score":174, "adjustment": 0.06, "prescription_demand": 2312 },
+    {"state": "NY", "urban_ratio": 0.88, "predicted_demand": 5585759, "percentage_of_population": 5.8, "percentage_of_asthma": 10.3, "market_share": 10.00, "allergy_score":167.4, "adjustment": 0.10, "prescription_demand": 5586 },
+    {"state": "MO", "urban_ratio": 0.66, "predicted_demand": 4189319, "percentage_of_population": 1.85, "percentage_of_asthma": 9.91, "market_share": 10.00, "allergy_score":173.21, "adjustment": 0.03, "prescription_demand": 1330 }
+]

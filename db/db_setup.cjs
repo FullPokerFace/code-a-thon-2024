@@ -26,13 +26,22 @@ db.connect(function(err){
         console.log('Connected to codeathon database!');
     })
 
-    let setupQuery = "CREATE TABLE IF NOT EXISTS heatmap(id INT NOT NULL AUTO_INCREMENT,latitude DECIMAL(10,6) NOT NULL,longitude DECIMAL(10,6) NOT NULL,count INT NOT NULL,PRIMARY KEY (id))"
-    db.query(setupQuery, (err, results) => {
+    let heatMapTableQuery = "CREATE TABLE IF NOT EXISTS heatmap(id INT NOT NULL AUTO_INCREMENT,latitude DECIMAL(10,6) NOT NULL,longitude DECIMAL(10,6) NOT NULL,count INT NOT NULL,PRIMARY KEY (id))"
+    db.query(heatMapTableQuery, (err, results) => {
         if (err){
             console.error('Error setting up table', err)
             return
             }
         console.log('Created heatmap table!');
+    })
+
+    let predictionTableQuery = "CREATE TABLE IF NOT EXISTS predictions(id INT NOT NULL AUTO_INCREMENT,state VARCHAR(255),urban_ratio DECIMAL(10,6),predicted_demand INT,percentage_of_population DECIMAL(10,6), percentage_of_asthma DECIMAL(10,6),market_share DECIMAL(10,6), allergy_score DECIMAL(10,6), adjustment DECIMAL(10,6), prescription_demand INT,PRIMARY KEY (id))"
+    db.query(predictionTableQuery, (err, results) => {
+        if (err){
+            console.error('Error setting up table', err)
+            return
+            }
+        console.log('Created predictions table!');
     })
 
     db.end((err) => {

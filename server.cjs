@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const HeatMap = require('./models/HeatMap.cjs')
+const Predictions = require('./models/Predictions.cjs')
 const cors = require('cors')
 const path = require('path')
 const { error } = require('console')
@@ -26,5 +27,17 @@ app.get('/', (req, res) => {
     res.json(heatMapRecords)
   })
 })
+
+app.get('/predictions', (req, res) => {
+  data = Predictions.getAllPredictionsData((err, predictionRecords)=>{
+    if (err) {
+      console.error("Error retrieving Predictions Records", err)
+      return
+    }
+    console.log(predictionRecords)
+    res.json(predictionRecords)
+  })
+})
+
 
 app.listen(3000, () => console.log('SneezeMap backend is listening on port 3000.'));
